@@ -4,6 +4,6 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: Running a sample github action
         run: echo "this workflow run successfully for this particular action"
