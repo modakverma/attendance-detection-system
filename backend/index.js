@@ -1,4 +1,3 @@
-const {firstYearStudentesData,secondYearStudentesData,thirdYearStudentesData,fourthYearStudentesData} = require('./utils/firstYearStudentsData');
 const express = require("express");
 const cors = require('cors');
 
@@ -19,27 +18,30 @@ const db = admin.database();
 const studentsRef = db.ref('Students');
 studentsRef.on('value', snapshot => {
     firstYearData = snapshot.val();
-    console.log(firstYearData)
 });
 
-app.get('/year=1',(req,res)=>{
+app.get('/year=1', (req, res) => {
+    const data = Object.values(firstYearData).filter((student) => student.year === 1);
     res.status(200).json({
-        data:firstYearData
+        data:data
     })
 })
-app.get('/year=2',(req,res)=>{
+app.get('/year=2', (req, res) => {
+    const data = Object.values(firstYearData).filter((student) => student.year === 2);
     res.status(200).json({
-        data:secondYearStudentesData
+        data:data
     })
 })
-app.get('/year=3',(req,res)=>{
+app.get('/year=3', (req, res) => {
+    const data = Object.values(firstYearData).filter((student) => student.year === 3);
     res.status(200).json({
-        data:thirdYearStudentesData
+        data:data
     })
 })
-app.get('/year=4',(req,res)=>{
+app.get('/year=4', (req, res) => {
+    const data = Object.values(firstYearData).filter((student) => student.year === 4);
     res.status(200).json({
-        data:fourthYearStudentesData
+        data:data
     })
 })
 
